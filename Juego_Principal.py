@@ -184,95 +184,96 @@ def juego_blackjack():
         #os.system('cls' if os.name == 'nt' else 'clear')
     
 
-nombreJugadorDados = ''
-vecesJugadoDados = 0
-vecesGanadoDados = 0
-vecesPerdidoDados = 0
+nombre_jugador_dados = ""
+veces_jugado_dados = 0
+veces_ganado_dados = 0
+veces_perdido_dados = 0
     
-def juegoDados():
-    # ─────────────────────────────────────
-    # Nombre del módulo: Juego Dados
-    # Variables:
-    #   juegoActivo : bool
-    #   tipoDeApuesta: str
-    #   opcionUsuario : str
-    #   dado1: int
-    #   dado2: int
-    #   sumaDados: int
-    #   nombreJugador: str
-    #   paridad = str
-    #---Variables globales reporte---
-    #   vecesJugadoDados: int
-    #   vecesGanadoDados: int
-    #   vecesPerdidoDados: int
-    # ─────────────────────────────────────
+def juego_dados():
 
-    global nombreJugadorDados
-    global vecesJugadoDados
-    global vecesGanadoDados
-    global vecesPerdidoDados
-    juegoActivo = True
-    tipoDeApuesta = ""
-    opcionUsuario = ""
+# ─────────────────────────────────────
+# Nombre del módulo: Juego Dados
+# Variables:
+#   juego_activo : bool
+#   tipo_de_apuesta: str
+#   opcion_usuario : str
+#   dado1: int
+#   dado2: int
+#   suma_dados: int
+#   paridad: str
+#---Variables globales reporte---
+#   nombre_jugador_dados: str
+#   veces_jugado_dados: int
+#   veces_ganado_dados: int
+#   veces_perdido_dados: int
+# ─────────────────────────────────────
+
+    global nombre_jugador_dados
+    global veces_jugado_dados
+    global veces_ganado_dados
+    global veces_perdido_dados
+    juego_activo = True
+    tipo_de_apuesta = ""
+    opcion_usuario = ""
     dado1 = 0
     dado2 = 0
-    sumaDados = 0
+    suma_dados = 0
     paridad = ""
 
     print("\n================================================\n")
     print ("  ♠ Juego: Dados ♠")
     print ("  Adiviná si la suma de los dados será par o impar\n")
     print("================================================\n")
-    vecesJugadoDados = vecesJugadoDados + 1
-    nombreJugadorDados = input("Escribe tu nombre: ")
-    while nombreJugadorDados == "":
+    veces_jugado_dados = veces_jugado_dados + 1
+    nombre_jugador_dados = input("Escribe tu nombre: ")
+    while nombre_jugador_dados == "":
         print("\n  ✗ Nombre vacío: Por favor escribe tu nombre\n")
-        nombreJugadorDados = input("Escribe tu nombre: ")
-    print(f"\n| Bienvenido, {nombreJugadorDados} ♠          |")
-    while juegoActivo:
-        tipoDeApuesta = input("\nApuestas por: 1) Par | 2) Impar\n> ")
-        while tipoDeApuesta != "1" and tipoDeApuesta != "2":
+        nombre_jugador_dados = input("Escribe tu nombre: ")
+    print(f"\n| Bienvenido, {nombre_jugador_dados} ♠          |")
+    while juego_activo:
+        tipo_de_apuesta = input("\nApuestas por: 1) Par | 2) Impar\n> ")
+        while tipo_de_apuesta != "1" and tipo_de_apuesta != "2":
             print("\n  ✗ Opción inválida. Ingresá 1 para Par o 2 para Impar.\n")
-            tipoDeApuesta = input("\nApuestas por: 1) Par | 2) Impar\n> ")
-        if tipoDeApuesta == "1":
+            tipo_de_apuesta = input("\nApuestas por: 1) Par | 2) Impar\n> ")
+        if tipo_de_apuesta == "1":
             print("\nApostaste por Par ✓\n")
         else:
             print("\nApostaste por Impar ✓\n")
         dado1 = random.randint(1,6)
         dado2 = random.randint(1,6)
-        sumaDados = dado1 + dado2
-        if sumaDados % 2 == 0:
+        suma_dados = dado1 + dado2
+        if suma_dados % 2 == 0:
             paridad = "Par"
         else:
             paridad = "Impar"
         print("  ~ Tirando dados ⚀⚁⚂⚃⚄⚅ ~")
         print("  ─────────────────")
         if paridad == "Par":
-            print(f"  Resultado: {sumaDados}  →  PAR ♠")
+            print(f"  Resultado: {suma_dados}  →  PAR ♠")
         else: 
-            print(f"  Resultado: {sumaDados}  →  IMPAR ♠")
+            print(f"  Resultado: {suma_dados}  →  IMPAR ♠")
         print("  ─────────────────")
-        if (paridad == "Par" and tipoDeApuesta == "1") or (paridad == "Impar" and tipoDeApuesta == "2"):
-            vecesGanadoDados = vecesGanadoDados + 1
+        if (paridad == "Par" and tipo_de_apuesta == "1") or (paridad == "Impar" and tipo_de_apuesta == "2"):
+            veces_ganado_dados = veces_ganado_dados + 1
             print(f"Ganaste ✓\n")
         else:
-            vecesPerdidoDados = vecesPerdidoDados + 1
+            veces_perdido_dados = veces_perdido_dados + 1
             print(f"\nPerdiste ✗\n")
         print("\n|----------------------------|+")
-        print(f"\n|      Ganados: {vecesGanadoDados}")
-        print(f"\n|      Perdidos: {vecesPerdidoDados}")
+        print(f"\n|      Ganados: {veces_ganado_dados}")
+        print(f"\n|      Perdidos: {veces_perdido_dados}")
         print("\n|----------------------------+|")
-        opcionUsuario = (input("\nElige una opción: 1) Seguir jugando 2) Salir \n> "))
-        while opcionUsuario != "1" and opcionUsuario != "2":
+        opcion_usuario = (input("\nElige una opción: 1) Seguir jugando 2) Salir \n> "))
+        while opcion_usuario != "1" and opcion_usuario != "2":
             print("\n✗ Opción inválida. Presiona tecla 1 para jugar o tecla 2 para salir.\n")
-            opcionUsuario = (input("\nElige una opción: 1) Seguir jugando 2) Salir \n> "))
-        if opcionUsuario == "2":
+            opcion_usuario = (input("\nElige una opción: 1) Seguir jugando 2) Salir \n> "))
+        if opcion_usuario == "2":
             print("+----------------------------+")
             print("|                            |")
             print("|   ♠  G A M E  O V E R  ♠   |")
             print("|                            |")
             print("+----------------------------+")
-            juegoActivo = False
+            juego_activo = False
             print("\nSaliendo al menú principal...")
             
     
@@ -284,8 +285,8 @@ def reporte():
         print('Mayor o Menor - Nombre:', nombre, '- Racha:', racha)
     if b_nombre_jugador != '':
         print('Número Secreto - Nombre:', b_nombre_jugador, '- Veces jugado:', b_veces_jugado, '- Ganadas:', b_veces_ganado, '- Perdidas:', b_veces_perdido)
-    if nombreJugadorDados != '':
-        print('\nDados (Par o Impar) - Nombre:', nombreJugadorDados, '- Veces jugadas:', vecesJugadoDados, '- Ganadas:', vecesGanadoDados, '- Perdidas:', vecesPerdidoDados)
+    if nombre_jugador_dados != '':
+        print('\nDados (Par o Impar) - Nombre:', nombre_jugador_dados, '- Veces jugadas:', veces_jugado_dados, '- Ganadas:', veces_ganado_dados, '- Perdidas:', veces_perdido_dados)
     print('---------------------------')
 
 
@@ -322,7 +323,7 @@ def main():
                 
             case "D":
                 os.system('cls' if os.name == 'nt' else 'clear')
-                juegoDados()
+                juego_dados()
                 os.system('cls' if os.name == 'nt' else 'clear')
                 
             case "E":
